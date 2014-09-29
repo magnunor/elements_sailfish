@@ -22,17 +22,26 @@ class ElementList():
     def __init__(self):
         self.sorted_atomic_number_symbol_list = None
         self.sorted_eds_lines_list = None
+        self.element_data_dict = None
         self.elements_rawdata = elements.elements
 
         self.make_sorted_atomic_number_symbol_list()
         self.make_sorted_eds_line_list()
         self.make_sorted_eels_edge_list()
+        self.make_element_data_dict()
 
     def make_sorted_atomic_number_symbol_list(self):
         filepath = os.path.dirname(os.path.realpath(__file__)) + "/data/"
         f = open(filepath + "element_list.json","r")
         temp_element_dict = json.load(f)
         self.sorted_atomic_number_symbol_list = temp_element_dict['element_list']
+        f.close()
+
+    def make_element_data_dict(self):
+        filepath = os.path.dirname(os.path.realpath(__file__)) + "/data/"
+        f = open(filepath + "element_data_dict.json","r")
+        temp_element_dict = json.load(f)
+        self.element_data_dict = temp_element_dict
         f.close()
 
     def make_sorted_eels_edge_list(self):
@@ -48,6 +57,10 @@ class ElementList():
         temp_eds_dict = json.load(f)
         self.sorted_eds_line_list = temp_eds_dict['eds_line_list']
         f.close()
+
+    def get_element_data(self, element_symbol):
+        element_data = self.element_data_dict[element_symbol]
+        return(element_data)
 
     def get_element_name(self, element_symbol):
         name = self.elements_rawdata[element_symbol]['General_properties']['name']

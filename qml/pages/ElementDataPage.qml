@@ -21,6 +21,7 @@ import io.thp.pyotherside 1.2
 
 Page {
     property var elementsymbol
+    property var elementdatadict
     PageHeader {
         id: elementDetailsHeader
         title: "Element details"
@@ -30,98 +31,37 @@ Page {
         anchors.top: elementDetailsHeader.bottom
         width: parent.width
         spacing: Theme.paddingLarge
-        Item {
-            width: parent.width
-            height: Theme.paddingLarge
-            Label {
-                text: "Name"
-                horizontalAlignment: Text.AlignLeft
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    leftMargin: Theme.paddingLarge
-                }
-            }
-            Label {
-                id: element_name
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    rightMargin: Theme.paddingLarge
-                }
-            }
-        }    
-        Item {
-            width: parent.width
-            height: Theme.paddingLarge
-            Label {
-                text: "Symbol"
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    leftMargin: Theme.paddingLarge
-                }
-            }
-            Label {
-                text: elementsymbol
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    rightMargin: Theme.paddingLarge
-                }
-            }
+        ElementItem {
+            tag: "Name"
+            value: elementdatadict.name
         }
-        Item {
-            width: parent.width
-            height: Theme.paddingLarge
-            Label {
-                text: "Density"
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    leftMargin: Theme.paddingLarge
-                }
-            }
-            Label {
-                id: element_density
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    rightMargin: Theme.paddingLarge
-                }
-            }
+        ElementItem {
+            tag: "Symbol"
+            value: elementsymbol
         }
-        Item {
-            width: parent.width
-            height: Theme.paddingLarge
-            Label {
-                text: "Atomic weight"
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    leftMargin: Theme.paddingLarge
-                }
-            }
-            Label {
-                id: element_atomic_weight
-                horizontalAlignment: Text.AlignRight
-                color: Theme.highlightColor
-                font.pixelSize: Theme.fontSizeLarge
-                anchors {
-                    fill: parent
-                    rightMargin: Theme.paddingLarge
-                }
-            }
+        ElementItem {
+            tag: "Atomic mass"
+            value: elementdatadict.atomic_mass
+        }
+        ElementItem {
+            tag: "Phase"
+            value: elementdatadict.phase
+        }
+        ElementItem {
+            tag: "Structure"
+            value: elementdatadict.crystal_structure
+        }
+        ElementItem {
+            tag: "Oxidation states"
+            value: elementdatadict.oxidation_states
+        }
+        ElementItem {
+            tag: "Series"
+            value: elementdatadict.series
+        }
+        ElementItem {
+            tag: "Electron configuration"
+            value: elementdatadict.electron_configuration
         }
         Row {
             Button {
@@ -143,40 +83,21 @@ Page {
     
     Python {
         id: py
-
         Component.onCompleted: {
             // Add the directory of this .qml file to the search path
             addImportPath(Qt.resolvedUrl('.'));
-            importModule('elements_tools', function () {});
+            importModule('elements_tools', function () {}); 
         }
 
-        function getElementName() {
+        function getElementData() {
             if (elementPage.elementsymbol) {
-                py.call('elements_tools.element_list.get_element_name', [elementsymbol], function(result) {
-                    element_name.text = result
-                    });
-                } 
-            }
-
-        function getElementDensity() {
-            if (elementPage.elementsymbol) {
-                py.call('elements_tools.element_list.get_element_density', [elementsymbol], function(result) {
-                    element_density.text = result
-                    });
-                } 
-            }
-
-        function getElementAtomicWeight() {
-            if (elementPage.elementsymbol) {
-                py.call('elements_tools.element_list.get_element_atomic_weight', [elementsymbol], function(result) {
-                    element_atomic_weight.text = result
+                py.call('elements_tools.element_list.get_element_data', [elementsymbol], function(result) {
+                    elementdatadict = result
                     });
                 } 
             }
     }
     onElementsymbolChanged: {
-        py.getElementName();
-        py.getElementDensity();
-        py.getElementAtomicWeight();
+        py.getElementData();
     }
 }

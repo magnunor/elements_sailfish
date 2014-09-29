@@ -106,6 +106,7 @@ Page {
             importModule('elements_tools', function () {}); 
             getLineList()
         }
+
         function getLineList() {
             py.call('elements_tools.element_list.get_sorted_eds_line_list', [], function(result) {
                 for (var i=0; i<result.length; i++) {
