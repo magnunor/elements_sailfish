@@ -49,7 +49,7 @@ Page {
             } 
             Label {
                 font.pixelSize: Theme.fontSizeSmall
-                text: 'Atom data: http://hyperspy.org/'
+                text: 'Atom data: http://hyperspy.org/ and \nhttps://www.wikipedia.org/'
             } 
             Label {
                 width: parent.width
