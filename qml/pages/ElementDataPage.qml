@@ -56,6 +56,14 @@ Page {
             value: elementdatadict.crystal_structure
         }
         ElementItem {
+            tag: "Boiling point"
+            value: elementdatadict.boiling_point_K
+        }
+        ElementItem {
+            tag: "Melting point"
+            value: elementdatadict.melting_point_K
+        }
+        ElementItem {
             tag: "Oxidation states"
             value: elementdatadict.oxidation_states
         }
