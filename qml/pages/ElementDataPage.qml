@@ -40,6 +40,10 @@ Page {
             value: elementsymbol
         }
         ElementItem {
+            tag: "Atomic number"
+            value: elementdatadict.number
+        }
+        ElementItem {
             tag: "Atomic mass"
             value: elementdatadict.atomic_mass
         }
