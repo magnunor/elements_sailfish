@@ -32,14 +32,14 @@ CoverBackground {
     CoverActionList {
         id: coverAction
         CoverAction {
-            iconSource: "../images/eds.png"
+            iconSource: "../images/eds_icon.png"
             onTriggered: {
                 pageStack.push(edsListPage)
                 appWindow.activate()
             }
         }
         CoverAction {
-            iconSource: "../images/eels.png"
+            iconSource: "../images/eels_icon.png"
             onTriggered: {
                 pageStack.push(eelsListPage)
                 appWindow.activate()
