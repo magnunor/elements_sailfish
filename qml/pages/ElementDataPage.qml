@@ -31,6 +31,11 @@ Page {
         anchors.top: elementDetailsHeader.bottom
         width: parent.width
         spacing: Theme.paddingLarge
+        Label {
+            color: Theme.highlightColor
+            font.pixelSize: Theme.fontSizeMedium
+            text: "General Properties"
+        } 
         ElementItem {
             tag: "Name"
             value: elementdatadict.name
@@ -44,17 +49,18 @@ Page {
             value: elementdatadict.number
         }
         ElementItem {
+            tag: "Series"
+            value: elementdatadict.series
+        }
+        ElementItem {
             tag: "Atomic mass"
             value: elementdatadict.atomic_mass
         }
-        ElementItem {
-            tag: "Phase"
-            value: elementdatadict.phase
-        }
-        ElementItem {
-            tag: "Structure"
-            value: elementdatadict.crystal_structure
-        }
+        Label {
+            color: Theme.highlightColor
+            font.pixelSize: Theme.fontSizeMedium
+            text: "Physical properties"
+        } 
         ElementItem {
             tag: "Boiling point"
             value: elementdatadict.boiling_point_K
@@ -64,16 +70,25 @@ Page {
             value: elementdatadict.melting_point_K
         }
         ElementItem {
-            tag: "Oxidation states"
-            value: elementdatadict.oxidation_states
+            tag: "Structure"
+            value: elementdatadict.crystal_structure
         }
         ElementItem {
-            tag: "Series"
-            value: elementdatadict.series
+            tag: "Phase"
+            value: elementdatadict.phase
         }
+        Label {
+            color: Theme.highlightColor
+            font.pixelSize: Theme.fontSizeMedium
+            text: "Electronic properties"
+        } 
         ElementItem {
             tag: "Electron configuration"
             value: elementdatadict.electron_configuration
+        }
+        ElementItem {
+            tag: "Oxidation states"
+            value: elementdatadict.oxidation_states
         }
         Row {
             Button {
