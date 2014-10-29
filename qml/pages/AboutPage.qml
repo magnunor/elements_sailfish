@@ -45,17 +45,25 @@ Page {
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
-                text: 'Source: https://github.com/magnunor/elements_sailfish'
+                text: 'Source: <html><style type="text/css"></style><a href="https://github.com/magnunor/elements_sailfish">https://github.com/magnunor/elements_sailfish</a></html>'
+                onLinkActivated: Qt.openUrlExternally('https://github.com/magnunor/elements_sailfish')
             } 
             Label {
                 font.pixelSize: Theme.fontSizeSmall
-                text: 'Atom data: http://hyperspy.org/ and \nhttps://www.wikipedia.org/'
+                text: 'Atom data: <html><style type="text/css"></style><a href="http://hyperspy.org/">http://hyperspy.org/</a></html> and'
+                onLinkActivated: Qt.openUrlExternally('http://hyperspy.org/')
+            } 
+            Label {
+                font.pixelSize: Theme.fontSizeSmall
+                text: '<html><style type="text/css"></style><a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a></html>'
+                onLinkActivated: Qt.openUrlExternally('https://www.wikipedia.org/')
             } 
             Label {
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
-                text: 'Icon: CC BY-SA 3.0, http://commons.wikimedia.org/wiki/File:Stylised_Lithium_Atom.svg'
+                text: 'Icon: CC BY-SA 3.0, <html><style type="text/css"></style><a href="http://commons.wikimedia.org/wiki/File:Stylised_Lithium_Atom.svg">http://commons.wikimedia.org/wiki/File:Stylised_Lithium_Atom.svg</a></html>'
+                onLinkActivated: Qt.openUrlExternally('http://commons.wikimedia.org/wiki/File:Stylised_Lithium_Atom.svg')
             } 
         }
     }
