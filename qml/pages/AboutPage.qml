@@ -35,7 +35,7 @@ Page {
             Label {
                 width: parent.width
                 font.pixelSize: Theme.fontSizeSmall
-                text: '© 2014 Magnus Nord'
+                text: '© 2015 Magnus Nord'
             } 
             Label {
                 font.pixelSize: Theme.fontSizeSmall
