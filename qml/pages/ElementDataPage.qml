@@ -70,6 +70,10 @@ Page {
             value: elementdatadict.melting_point_K
         }
         ElementItem {
+            tag: "Density"
+            value: elementdatadict.density_gpcm3nrt
+        }
+        ElementItem {
             tag: "Structure"
             value: elementdatadict.crystal_structure
         }
